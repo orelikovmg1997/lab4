@@ -35,3 +35,16 @@
 # test_4
 # 1
 # 2
+def print_result(func):
+    def some_fun(*args, **kwargs):
+        print(func.__name__)
+        data = func(*args, **kwargs)
+        if isinstance(data,list) == True:
+            print("\n".join(map(str, data)))
+        elif type(data) == dict:
+            print("\n".join(map(lambda x: "{} = {}".format(x[0], x[1]), data.items())))
+        else:
+            print(data)
+        return data
+
+    return some_fun
